@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+/* Dark theme (default), colors taken from the mockup */
+:root {
+  --page: #070b17;
+  --app: #0b1020;
+  --card: #131a2e;
+  --line: #232c47;
+  --tx: #e8ebf5;
+  --mu: #8b94b3;
+  --ac: #7c6cf0;
+  --ac-bg: #2a2552;
+  --bad: #f0605d;
+  --bad-bg: #3a1a22;
+  --warn: #f2a93b;
+  --warn-bg: #38290f;
+  --good: #2fc79a;
+  --good-bg: #0f3029;
+  --info: #5b9cf5;
+}
+
+/* Light theme follows the computer's setting */
+@media (prefers-color-scheme: light) {
+  :root {
+    --page: #e9ecf6;
+    --app: #f6f7fc;
+    --card: #ffffff;
+    --line: #dde1ef;
+    --tx: #151a2e;
+    --mu: #5d6785;
+    --ac-bg: #e6e3fc;
+    --bad-bg: #fde7e7;
+    --warn-bg: #fdf0d9;
+    --good-bg: #dcf5ec;
+  }
+}
+
+/* Makes these names work as Tailwind classes: bg-card, text-mu, border-line ... */
+@theme inline {
+  --color-page: var(--page);
+  --color-app: var(--app);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-tx: var(--tx);
+  --color-mu: var(--mu);
+  --color-ac: var(--ac);
+  --color-ac-bg: var(--ac-bg);
+  --color-bad: var(--bad);
+  --color-bad-bg: var(--bad-bg);
+  --color-warn: var(--warn);
+  --color-warn-bg: var(--warn-bg);
+  --color-good: var(--good);
+  --color-good-bg: var(--good-bg);
+  --color-info: var(--info);
+}
+
+@theme {
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--tx);
+    font-family: var(--font-sans);
+    font-size: 14px;
+  }
+}
+/* Extra polish */
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ac);
+    outline-offset: 2px;
+  }
+  button {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Acme Corp",
+    "taxId": "12-3456789",
+    "bankAccount": "****1234",
+    "email": "billing@acme.com",
+    "paymentTerms": "net30"
+  },
+  {
+    "name": "Global Supplies Inc",
+    "taxId": "98-7654321",
+    "bankAccount": "****5678",
+    "email": "ap@globalsupplies.com",
+    "paymentTerms": "net45"
+  },
+  {
+    "name": "Tech Services LLC",
+    "taxId": "45-1234567",
+    "bankAccount": "****9012",
+    "email": "invoices@techservices.com",
+    "paymentTerms": "net30"
+  }
+]

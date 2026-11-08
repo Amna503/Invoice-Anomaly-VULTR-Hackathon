@@ -1,0 +1,74 @@
+{
+  "ok": true,
+  "data": {
+    "summary": {
+      "totalInvoices": 87,
+      "pendingReview": 12,
+      "autoCleared": 65,
+      "blocked": 5,
+      "processed": 5
+    },
+    "byStatus": {
+      "received": 3,
+      "processing": 2,
+      "auto_cleared": 65,
+      "needs_review": 12,
+      "blocked": 5,
+      "approved": 3,
+      "rejected": 1,
+      "query_sent": 1,
+      "failed": 0
+    },
+    "byRoute": {
+      "auto_cleared": 65,
+      "needs_review": 17,
+      "blocked": 5
+    },
+    "riskDistribution": {
+      "low": 65,
+      "medium": 12,
+      "high": 5,
+      "critical": 5
+    },
+    "flagTypes": {
+      "duplicate_invoice": 4,
+      "bank_account_changed": 2,
+      "over_po_amount": 6,
+      "no_po_found": 3,
+      "price_outlier": 5,
+      "math_error": 2,
+      "unknown_vendor": 1
+    },
+    "recentActivity": [
+      {
+        "date": "2026-11-08",
+        "uploaded": 5,
+        "cleared": 3,
+        "flagged": 2
+      },
+      {
+        "date": "2026-11-07",
+        "uploaded": 12,
+        "cleared": 8,
+        "flagged": 4
+      },
+      {
+        "date": "2026-11-06",
+        "uploaded": 8,
+        "cleared": 7,
+        "flagged": 1
+      },
+      {
+        "date": "2026-11-05",
+        "uploaded": 15,
+        "cleared": 10,
+        "flagged": 3
+      }
+    ],
+    "processingTime": {
+      "average": 45,
+      "median": 38,
+      "p95": 120
+    }
+  }
+}

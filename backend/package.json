@@ -1,0 +1,53 @@
+{
+  "name": "invoice-anomaly-desk-backend",
+  "version": "1.0.0",
+  "description": "AI-powered invoice anomaly detection API for Vultr hackathon",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "test": "vitest run",
+    "test:unit": "vitest run src/tests/unit",
+    "test:integration": "vitest run src/tests/integration",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "seed": "node scripts/seed.js",
+    "list-models": "node scripts/listModels.js",
+    "e2e": "node scripts/e2e.js"
+  },
+  "keywords": [
+    "invoice",
+    "anomaly-detection",
+    "ai",
+    "vultr",
+    "fraud-detection"
+  ],
+  "author": "Ammar Zia",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "mongoose": "^8.0.3",
+    "multer": "^1.4.5-lts.1",
+    "openai": "^4.104.0",
+    "pdf-parse": "^1.1.1",
+    "pino": "^8.16.2",
+    "pino-pretty": "^10.2.3",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "formdata-node": "^6.0.3",
+    "supertest": "^6.3.3",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}

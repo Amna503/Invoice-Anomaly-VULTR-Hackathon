@@ -1,0 +1,43 @@
+{
+  "ok": true,
+  "data": {
+    "vendors": [
+      {
+        "_id": "673d4a1b8c2d3e4f5a6b7890",
+        "name": "Acme Corp",
+        "taxId": "12-3456789",
+        "bankAccount": "****1234",
+        "email": "billing@acme.com",
+        "paymentTerms": "net30",
+        "createdAt": "2026-11-01T08:00:00.000Z",
+        "updatedAt": "2026-11-01T08:00:00.000Z"
+      },
+      {
+        "_id": "673d4a2c9d3e4f5a6b789abc",
+        "name": "Global Supplies Inc",
+        "taxId": "98-7654321",
+        "bankAccount": "****5678",
+        "email": "ap@globalsupplies.com",
+        "paymentTerms": "net45",
+        "createdAt": "2026-11-01T08:00:00.000Z",
+        "updatedAt": "2026-11-01T08:00:00.000Z"
+      },
+      {
+        "_id": "673d4a3dae4f5a6b789cdef",
+        "name": "Tech Services LLC",
+        "taxId": "45-1234567",
+        "bankAccount": "****9012",
+        "email": "invoices@techservices.com",
+        "paymentTerms": "net30",
+        "createdAt": "2026-11-01T08:00:00.000Z",
+        "updatedAt": "2026-11-01T08:00:00.000Z"
+      }
+    ],
+    "pagination": {
+      "total": 3,
+      "limit": 25,
+      "offset": 0,
+      "hasMore": false
+    }
+  }
+}

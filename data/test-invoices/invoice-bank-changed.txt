@@ -1,0 +1,6 @@
+INVOICE
+Invoice Number: INV-55001
+Vendor: Acme Corp
+Date: 2026-11-05
+Total: $5500.00
+Bank Account: 9999

@@ -1,0 +1,80 @@
+{
+  "ok": true,
+  "data": {
+    "invoice": {
+      "_id": "673d4e2f8a1b2c3d4e5f6789",
+      "originalFileName": "invoice-acme-nov2026.pdf",
+      "storedFileName": "1730985000123-a1b2c3d4e5f6.pdf",
+      "fileType": "pdf",
+      "status": "needs_review",
+      "route": "needs_review",
+      "riskScore": 15,
+      "currentStep": "completed",
+      "extracted": {
+        "vendorName": "Acme Corp",
+        "invoiceNumber": "INV-12345",
+        "invoiceDate": "2026-11-01T00:00:00.000Z",
+        "currency": "USD",
+        "lineItems": [
+          {
+            "description": "Consulting Services - Phase 1",
+            "quantity": 40,
+            "unitPrice": 150,
+            "amount": 6000
+          },
+          {
+            "description": "Additional Development Work",
+            "quantity": 60,
+            "unitPrice": 150,
+            "amount": 9000
+          }
+        ],
+        "subtotal": 15000,
+        "tax": 0,
+        "total": 15000,
+        "bankAccount": "****1234",
+        "poNumber": "PO-1001"
+      },
+      "vendorId": "673d4a1b8c2d3e4f5a6b7890",
+      "purchaseOrderId": "673d4b2c9d3e4f5a6b789012",
+      "createdAt": "2026-11-07T10:35:00.000Z",
+      "updatedAt": "2026-11-07T10:36:15.000Z"
+    },
+    "flags": [
+      {
+        "_id": "673d4e5f9a2b3c4d5e6f7abc",
+        "invoiceId": "673d4e2f8a1b2c3d4e5f6789",
+        "type": "over_po_amount",
+        "severity": "high",
+        "evidence": {
+          "invoiceTotal": 15000,
+          "approvedAmount": 6000,
+          "difference": 9000
+        },
+        "explanation": "This invoice exceeds the approved purchase order amount by $9,000 (150%). The PO approved $6,000 for 40 hours of consulting, but this invoice bills for 100 hours totaling $15,000. This significant overage requires approval before payment.",
+        "createdAt": "2026-11-07T10:36:10.000Z"
+      },
+      {
+        "_id": "673d4e6fab3c4d5e6f789def",
+        "invoiceId": "673d4e2f8a1b2c3d4e5f6789",
+        "type": "duplicate_invoice",
+        "severity": "medium",
+        "evidence": {
+          "invoiceNumber": "INV-12345",
+          "existingInvoiceId": "673d4c3d9e4f5a6b789abcd",
+          "existingInvoiceDate": "2026-10-15T00:00:00.000Z"
+        },
+        "explanation": "An invoice with the same number (INV-12345) from Acme Corp was previously submitted on October 15, 2026. This could be a duplicate submission or a numbering error. Please verify with the vendor before processing payment.",
+        "createdAt": "2026-11-07T10:36:12.000Z"
+      }
+    ],
+    "emailDraft": {
+      "_id": "673d4e8fbc4d5e6f789efgh",
+      "invoiceId": "673d4e2f8a1b2c3d4e5f6789",
+      "subject": "Query Regarding Invoice INV-12345",
+      "body": "Dear Acme Corp Accounts Team,\n\nWe are reviewing invoice INV-12345 dated November 1, 2026, and have identified some items that require clarification before we can process payment:\n\n1. **Amount Exceeds PO:** The invoice total of $15,000 exceeds our purchase order PO-1001 approved amount of $6,000 by $9,000. Our records show approval for 40 hours of consulting services. Please provide:\n   - Breakdown of the additional 60 hours billed\n   - Any change orders or amended PO approvals\n   - Supporting documentation for the scope increase\n\n2. **Possible Duplicate:** Our system shows invoice number INV-12345 was previously submitted on October 15, 2026. Please confirm:\n   - Is this a resubmission of the same invoice?\n   - If this is a new invoice, was the previous one canceled?\n   - Should one of these invoices use a different number?\n\nPlease respond within 5 business days with the requested documentation. Payment will be held pending your response.\n\nBest regards,\nAccounts Payable Team",
+      "status": "draft",
+      "createdAt": "2026-11-07T10:36:15.000Z"
+    }
+  }
+}

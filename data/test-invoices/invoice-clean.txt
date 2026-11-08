@@ -1,0 +1,6 @@
+INVOICE
+Invoice Number: INV-54321
+Vendor: Global Supplies Inc
+Date: 2026-11-06
+Total: $2,500.00
+PO Number: PO-1002

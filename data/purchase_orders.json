@@ -1,0 +1,44 @@
+[
+  {
+    "poNumber": "PO-1001",
+    "vendorTaxId": "12-3456789",
+    "lineItems": [
+      {
+        "description": "Consulting Services",
+        "quantity": 40,
+        "unitPrice": 150,
+        "amount": 6000
+      }
+    ],
+    "status": "approved",
+    "approvedBy": "Manager A"
+  },
+  {
+    "poNumber": "PO-1002",
+    "vendorTaxId": "98-7654321",
+    "lineItems": [
+      {
+        "description": "Office Supplies",
+        "quantity": 100,
+        "unitPrice": 25,
+        "amount": 2500
+      }
+    ],
+    "status": "approved",
+    "approvedBy": "Manager B"
+  },
+  {
+    "poNumber": "PO-1003",
+    "vendorTaxId": "45-1234567",
+    "lineItems": [
+      {
+        "description": "Software License",
+        "quantity": 10,
+        "unitPrice": 500,
+        "amount": 5000
+      }
+    ],
+    "status": "approved",
+    "approvedBy": "Manager C"
+  }
+]

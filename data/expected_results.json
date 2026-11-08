@@ -1,0 +1,42 @@
+{
+  "invoice-duplicate.txt": {
+    "route": "needs_review",
+    "minFlags": 1,
+    "expectedFlags": ["duplicate_invoice"]
+  },
+  "invoice-over-po.txt": {
+    "route": "blocked",
+    "minFlags": 1,
+    "expectedFlags": ["over_purchase_order"]
+  },
+  "invoice-bank-changed.txt": {
+    "route": "blocked",
+    "minFlags": 1,
+    "expectedFlags": ["bank_details_changed"]
+  },
+  "invoice-unknown-vendor.txt": {
+    "route": "needs_review",
+    "minFlags": 1,
+    "expectedFlags": ["unknown_vendor"]
+  },
+  "invoice-price-outlier.txt": {
+    "route": "needs_review",
+    "minFlags": 1,
+    "expectedFlags": ["price_outlier"]
+  },
+  "invoice-math-error.txt": {
+    "route": "needs_review",
+    "minFlags": 1,
+    "expectedFlags": ["math_error"]
+  },
+  "invoice-no-po.txt": {
+    "route": "needs_review",
+    "minFlags": 1,
+    "expectedFlags": ["no_matching_po"]
+  },
+  "invoice-clean.txt": {
+    "route": "auto_cleared",
+    "minFlags": 0,
+    "expectedFlags": []
+  }
+}

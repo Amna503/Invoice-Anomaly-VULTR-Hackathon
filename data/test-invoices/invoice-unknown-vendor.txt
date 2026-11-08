@@ -1,0 +1,5 @@
+INVOICE
+Invoice Number: INV-99001
+Vendor: Unknown Shell Corp LLC
+Date: 2026-11-05
+Total: $3000.00

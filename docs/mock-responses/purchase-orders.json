@@ -1,0 +1,85 @@
+{
+  "ok": true,
+  "data": {
+    "purchaseOrders": [
+      {
+        "_id": "673d4b2c9d3e4f5a6b789012",
+        "poNumber": "PO-1001",
+        "vendorId": "673d4a1b8c2d3e4f5a6b7890",
+        "vendor": {
+          "_id": "673d4a1b8c2d3e4f5a6b7890",
+          "name": "Acme Corp",
+          "taxId": "12-3456789"
+        },
+        "lineItems": [
+          {
+            "description": "Consulting Services",
+            "quantity": 40,
+            "unitPrice": 150,
+            "amount": 6000
+          }
+        ],
+        "approvedAmount": 6000,
+        "status": "approved",
+        "approvedBy": "Manager A",
+        "approvedAt": "2026-10-25T10:00:00.000Z",
+        "createdAt": "2026-10-20T09:00:00.000Z",
+        "updatedAt": "2026-10-25T10:00:00.000Z"
+      },
+      {
+        "_id": "673d4b3dae4f5a6b789123",
+        "poNumber": "PO-1002",
+        "vendorId": "673d4a2c9d3e4f5a6b789abc",
+        "vendor": {
+          "_id": "673d4a2c9d3e4f5a6b789abc",
+          "name": "Global Supplies Inc",
+          "taxId": "98-7654321"
+        },
+        "lineItems": [
+          {
+            "description": "Office Supplies",
+            "quantity": 100,
+            "unitPrice": 25,
+            "amount": 2500
+          }
+        ],
+        "approvedAmount": 2500,
+        "status": "approved",
+        "approvedBy": "Manager B",
+        "approvedAt": "2026-10-28T11:30:00.000Z",
+        "createdAt": "2026-10-22T10:00:00.000Z",
+        "updatedAt": "2026-10-28T11:30:00.000Z"
+      },
+      {
+        "_id": "673d4b4ebf5a6b789234",
+        "poNumber": "PO-1003",
+        "vendorId": "673d4a3dae4f5a6b789cdef",
+        "vendor": {
+          "_id": "673d4a3dae4f5a6b789cdef",
+          "name": "Tech Services LLC",
+          "taxId": "45-1234567"
+        },
+        "lineItems": [
+          {
+            "description": "Software License",
+            "quantity": 10,
+            "unitPrice": 500,
+            "amount": 5000
+          }
+        ],
+        "approvedAmount": 5000,
+        "status": "approved",
+        "approvedBy": "Manager C",
+        "approvedAt": "2026-10-30T14:00:00.000Z",
+        "createdAt": "2026-10-25T12:00:00.000Z",
+        "updatedAt": "2026-10-30T14:00:00.000Z"
+      }
+    ],
+    "pagination": {
+      "total": 3,
+      "limit": 25,
+      "offset": 0,
+      "hasMore": false
+    }
+  }
+}

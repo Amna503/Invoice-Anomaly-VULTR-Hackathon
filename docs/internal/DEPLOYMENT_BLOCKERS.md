@@ -1,0 +1,238 @@
+# 🚧 Deployment Blockers
+
+**Status:** Code complete, deployment blocked by external dependencies
+
+---
+
+## ❌ CRITICAL BLOCKERS (Must Complete Before Deploy)
+
+### 1. Vultr Serverless Inference API Key ⏱️ ~5 minutes
+
+**Status:** ❌ Placeholder in .env  
+**Impact:** Server won't start, AI features won't work  
+**Action Required:**
+
+```bash
+# 1. Get API key from Vultr
+# Visit: https://my.vultr.com/settings/#settingsapi
+# Or: https://www.vultr.com/products/ai/
+
+# 2. Update .env
+VULTR_INFERENCE_API_KEY=<your-actual-key-here>
+
+# 3. Test the key
+cd backend
+npm run list-models
+# Should list available models if key is valid
+```
+
+**Verification:**
+```bash
+# Server should start without API key errors
+npm run dev
+# No "VULTR_INFERENCE_API_KEY: Required" error
+```
+
+---
+
+### 2. Start MongoDB ⏱️ ~2 minutes
+
+**Status:** ❌ Not running (Docker Desktop offline)  
+**Impact:** Server can't connect to database  
+**Action Required:**
+
+**Option A: Docker (Recommended)**
+```bash
+# Start Docker Desktop first, then:
+docker run -d -p 27017:27017 --name invoice-mongo mongo:7
+```
+
+**Option B: Docker Compose (Full Stack)**
+```bash
+# Start Docker Desktop first, then:
+docker-compose up -d
+```
+
+**Option C: Local MongoDB**
+```bash
+# If MongoDB installed locally:
+mongod --dbpath /path/to/data
+```
+
+**Verification:**
+```bash
+# Check MongoDB is accessible
+mongosh mongodb://localhost:27017/invoice-anomaly
+# Should connect without errors
+```
+
+---
+
+## ⚠️ RECOMMENDED (Should Complete)
+
+### 3. Test Server Locally ⏱️ ~10 minutes
+
+**Status:** ⚠️ Not tested (blocked by #1 and #2)  
+**Impact:** Unknown if server actually works  
+**Action Required:**
+
+```bash
+# After completing blockers 1 & 2:
+cd backend
+npm run dev
+
+# In another terminal:
+curl http://localhost:3000/api/health
+# Expected: {"ok":true,"data":{"status":"healthy",...}}
+
+# Test upload:
+# (Requires sample PDF/CSV invoice)
+curl -F "files=@sample-invoice.pdf" http://localhost:3000/api/invoices/upload
+```
+
+---
+
+### 4. Load Test Data ⏱️ ~2 minutes
+
+**Status:** ⚠️ Not loaded  
+**Impact:** Can't test realistic scenarios  
+**Action Required:**
+
+```bash
+# After MongoDB running:
+cd backend
+npm run seed
+# Creates 3 vendors and 3 purchase orders
+```
+
+---
+
+### 5. Provision Vultr VM ⏱️ ~15 minutes
+
+**Status:** ❌ Not provisioned  
+**Impact:** Can't deploy to production  
+**Action Required:**
+
+```bash
+# 1. Log in to Vultr account
+# 2. Deploy new Cloud Compute instance:
+#    - OS: Ubuntu 22.04 LTS
+#    - Size: 2 vCPU, 4GB RAM minimum
+#    - Region: Choose closest to users
+#    - Enable IPv4
+#    - Add SSH key
+
+# 3. Install Docker on VM
+ssh root@<vultr-vm-ip>
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+
+# 4. Clone repository
+git clone <your-repo-url>
+cd invoice-anomaly-desk
+
+# 5. Configure .env with production values
+cp .env.example .env
+nano .env  # Add real API key, admin token
+
+# 6. Deploy
+./deploy/deploy.sh
+```
+
+**Verification:**
+```bash
+curl http://<vultr-vm-ip>:3000/api/health
+```
+
+---
+
+## ✅ COMPLETED (Automated Tasks)
+
+### 1. Fix .env Configuration ✅
+
+**Status:** ✅ Complete  
+**Details:**
+- Removed duplicate lines
+- Generated secure ADMIN_TOKEN (44 characters, base64)
+- Preserved all other configuration
+
+---
+
+### 2. Create Verification Script ✅
+
+**Status:** ✅ Complete  
+**File:** `verify.sh`  
+**Usage:**
+```bash
+./verify.sh
+# Checks: Node version, dependencies, env vars, file structure, syntax, Docker, git
+```
+
+---
+
+### 3. Create Pre-flight Checklist ✅
+
+**Status:** ✅ Complete  
+**File:** `preflight.js`  
+**Usage:**
+```bash
+node preflight.js
+# Interactive checklist covering all deployment steps
+```
+
+---
+
+### 4. Git Commit Prepared ✅
+
+**Status:** ⏳ Ready to commit (see Task 5 below)  
+**Details:** All 70 files staged and ready
+
+---
+
+## 📋 Quick Start Guide
+
+**To get from here to deployed in ~30 minutes:**
+
+1. **Get Vultr API key** (5 min) → Update .env
+2. **Start MongoDB** (2 min) → `docker run -d -p 27017:27017 mongo:7`
+3. **Test locally** (5 min) → `npm run dev` + curl health endpoint
+4. **Load test data** (2 min) → `npm run seed`
+5. **Commit to git** (2 min) → See Task 5 below
+6. **Deploy to Vultr** (15 min) → Provision VM + run deploy.sh
+
+---
+
+## 🎯 Current Status Summary
+
+```
+Code:          100% ✅ Complete
+Dependencies:  100% ✅ Installed
+Configuration:  60% ⚠️ ADMIN_TOKEN done, API key needed
+Database:        0% ❌ Not running
+Testing:         0% ❌ Blocked by API key + database
+Deployment:      0% ❌ No VM provisioned
+Git:            99% ⚠️ Ready to commit (see below)
+```
+
+**Deployment Readiness:** 40% → 100% with blockers resolved
+
+---
+
+## 📞 Next Steps
+
+**Immediate (Required):**
+1. Obtain Vultr Serverless Inference API key
+2. Start MongoDB locally
+3. Test server works
+4. Commit all changes to git
+
+**Then (Deploy):**
+5. Provision Vultr VM
+6. Run deployment script
+7. Test production endpoint
+8. Update README with live URL
+
+---
+
+**Last Updated:** November 7, 2026  
+**Auto-Generated by:** Vibe CEO Orchestrator

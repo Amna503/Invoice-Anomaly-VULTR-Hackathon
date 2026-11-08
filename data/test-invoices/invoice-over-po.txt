@@ -1,0 +1,8 @@
+INVOICE
+Invoice Number: INV-99999
+Vendor: Acme Corp
+Date: 2026-11-05
+Line Items:
+- Consulting: 100 hours @ $150 = $15,000
+Total: $15,000.00
+PO Number: PO-1001

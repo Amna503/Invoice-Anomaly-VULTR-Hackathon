@@ -1,0 +1,58 @@
+{
+  "validation_error": {
+    "ok": false,
+    "error": {
+      "code": "VALIDATION_ERROR",
+      "message": "Invalid request data: status must be one of: received, processing, auto_cleared, needs_review, blocked, approved, rejected, query_sent, failed"
+    }
+  },
+  "not_found": {
+    "ok": false,
+    "error": {
+      "code": "NOT_FOUND",
+      "message": "Invoice not found"
+    }
+  },
+  "file_too_large": {
+    "ok": false,
+    "error": {
+      "code": "FILE_TOO_LARGE",
+      "message": "File size exceeds 10MB limit"
+    }
+  },
+  "invalid_file_type": {
+    "ok": false,
+    "error": {
+      "code": "INVALID_FILE_TYPE",
+      "message": "Only PDF and CSV files are allowed"
+    }
+  },
+  "extraction_failed": {
+    "ok": false,
+    "error": {
+      "code": "EXTRACTION_FAILED",
+      "message": "Scanned PDF not supported - text extraction returned empty result"
+    }
+  },
+  "ai_service_error": {
+    "ok": false,
+    "error": {
+      "code": "AI_SERVICE_ERROR",
+      "message": "Vultr Inference API request failed: timeout after 30000ms"
+    }
+  },
+  "unauthorized": {
+    "ok": false,
+    "error": {
+      "code": "UNAUTHORIZED",
+      "message": "Missing or invalid admin token"
+    }
+  },
+  "rate_limit": {
+    "ok": false,
+    "error": {
+      "code": "RATE_LIMIT_EXCEEDED",
+      "message": "Too many requests. Please try again in 15 minutes."
+    }
+  }
+}
