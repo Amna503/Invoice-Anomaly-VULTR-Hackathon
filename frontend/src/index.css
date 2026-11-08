@@ -1,39 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
-/* Dark theme (default), colors taken from the mockup */
+/* Premium dark theme — deep navy / charcoal with violet, electric blue, cyan */
 :root {
-  --page: #070b17;
-  --app: #0b1020;
-  --card: #131a2e;
-  --line: #232c47;
-  --tx: #e8ebf5;
-  --mu: #8b94b3;
-  --ac: #7c6cf0;
-  --ac-bg: #2a2552;
-  --bad: #f0605d;
-  --bad-bg: #3a1a22;
-  --warn: #f2a93b;
-  --warn-bg: #38290f;
-  --good: #2fc79a;
-  --good-bg: #0f3029;
-  --info: #5b9cf5;
-}
-
-/* Light theme follows the computer's setting */
-@media (prefers-color-scheme: light) {
-  :root {
-    --page: #e9ecf6;
-    --app: #f6f7fc;
-    --card: #ffffff;
-    --line: #dde1ef;
-    --tx: #151a2e;
-    --mu: #5d6785;
-    --ac-bg: #e6e3fc;
-    --bad-bg: #fde7e7;
-    --warn-bg: #fdf0d9;
-    --good-bg: #dcf5ec;
-  }
+  color-scheme: dark;
+  --page: #05070f;
+  --app: #080b16;
+  --card: #0e1322;
+  --card-2: #121829;
+  --line: #1e2537;
+  --line-soft: #171d2e;
+  --tx: #e9edf8;
+  --tx-2: #b6bed6;
+  --mu: #7e87a6;
+  --ac: #8b5cf6;
+  --ac-2: #4f8cff;
+  --cyan: #22d3ee;
+  --ac-bg: #1a1636;
+  --bad: #fb7185;
+  --bad-bg: #2a121b;
+  --warn: #fbbf24;
+  --warn-bg: #2a2110;
+  --good: #34d399;
+  --good-bg: #0e2b23;
+  --info: #60a5fa;
 }
 
 /* Makes these names work as Tailwind classes: bg-card, text-mu, border-line ... */
@@ -41,10 +31,15 @@
   --color-page: var(--page);
   --color-app: var(--app);
   --color-card: var(--card);
+  --color-card2: var(--card-2);
   --color-line: var(--line);
+  --color-linesoft: var(--line-soft);
   --color-tx: var(--tx);
+  --color-tx2: var(--tx-2);
   --color-mu: var(--mu);
   --color-ac: var(--ac);
+  --color-ac2: var(--ac-2);
+  --color-cyan: var(--cyan);
   --color-ac-bg: var(--ac-bg);
   --color-bad: var(--bad);
   --color-bad-bg: var(--bad-bg);
@@ -61,30 +56,193 @@
 }
 
 @layer base {
+  * {
+    border-color: var(--line);
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
   body {
     margin: 0;
-    background: var(--page);
+    background:
+      radial-gradient(1100px 500px at 85% -10%, rgba(79, 140, 255, 0.10), transparent 60%),
+      radial-gradient(900px 420px at 5% -15%, rgba(139, 92, 246, 0.12), transparent 55%),
+      var(--page);
+    background-attachment: fixed;
     color: var(--tx);
     font-family: var(--font-sans);
     font-size: 14px;
-  }
-}
-/* Extra polish */
-@layer base {
-  html {
-    -webkit-tap-highlight-color: transparent;
-  }
-  body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     padding-top: env(safe-area-inset-top, 0px);
   }
   :focus-visible {
     outline: 2px solid var(--ac);
     outline-offset: 2px;
+    border-radius: 6px;
   }
   button {
     cursor: pointer;
   }
   button:disabled {
     cursor: not-allowed;
+  }
+  ::selection {
+    background: rgba(139, 92, 246, 0.35);
+  }
+}
+
+/* ---------- Scrollbars ---------- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #26304a transparent;
+}
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-thumb {
+  background: #26304a;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334062;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------- Surfaces ---------- */
+.surface {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0)) var(--card);
+}
+.card-hover {
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+.card-hover:hover {
+  border-color: #2b3552;
+  box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.9);
+}
+.topline {
+  position: relative;
+  overflow: hidden;
+}
+.topline::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.55), rgba(34, 211, 238, 0.35), transparent);
+}
+.glow-ac {
+  box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.25), 0 18px 50px -30px rgba(139, 92, 246, 0.85);
+}
+.text-grad {
+  background: linear-gradient(92deg, #a78bfa 0%, #60a5fa 48%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(52, 211, 153, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.page-enter {
+  animation: fadeUp 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.stagger > * {
+  animation: fadeUp 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.stagger > *:nth-child(1) { animation-delay: 0.02s; }
+.stagger > *:nth-child(2) { animation-delay: 0.06s; }
+.stagger > *:nth-child(3) { animation-delay: 0.1s; }
+.stagger > *:nth-child(4) { animation-delay: 0.14s; }
+.stagger > *:nth-child(5) { animation-delay: 0.18s; }
+.stagger > *:nth-child(6) { animation-delay: 0.22s; }
+.stagger > *:nth-child(7) { animation-delay: 0.26s; }
+.stagger > *:nth-child(8) { animation-delay: 0.3s; }
+
+.live-dot {
+  animation: pulseRing 2.2s ease-out infinite;
+}
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+
+/* ---------- Skeletons ---------- */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #141a2b;
+  border-radius: 8px;
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  animation: shimmer 1.4s infinite;
+}
+
+/* ---------- Chart tooltip (recharts) ---------- */
+.chart-tip {
+  background: #111726;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-size: 11px;
+  box-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.9);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

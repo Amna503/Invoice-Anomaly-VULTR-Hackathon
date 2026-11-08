@@ -8,6 +8,9 @@ import * as real from './realApi'
 const useMock = import.meta.env.VITE_USE_MOCK !== 'false'
 const impl = useMock ? mock : real
 
+/** True when the app is running on demo data instead of the live API */
+export const isMock = useMock
+
 export const getStats = impl.getStats
 export const getInvoices = impl.getInvoices
 export const getInvoice = impl.getInvoice
@@ -18,3 +21,4 @@ export const uploadInvoices = impl.uploadInvoices
 export const getVendors = impl.getVendors
 export const getPurchaseOrders = impl.getPurchaseOrders
 export const getAudit = impl.getAudit
+export const getHealth = impl.getHealth

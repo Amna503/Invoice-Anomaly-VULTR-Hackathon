@@ -123,7 +123,22 @@ export async function getPurchaseOrders() {
 }
 
 // GET /api/audit
+// `ts` lets the UI sort events (mock times are clock strings, one day only)
 export async function getAudit() {
   await wait()
-  return db.audit
+  return db.audit.map((e) => ({
+    ...e,
+    ts: e.ts ?? (Date.parse('1970-01-01T' + e.time + 'Z') || 0),
+  }))
+}
+
+// GET /api/health — used by the system-status pill in the top bar
+export async function getHealth() {
+  await wait(150)
+  return {
+    status: 'healthy',
+    mode: 'mock',
+    database: 'demo data',
+    timestamp: new Date().toISOString(),
+  }
 }
